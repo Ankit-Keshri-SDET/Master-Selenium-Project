@@ -22,20 +22,23 @@ public class StorePage extends BasePage {
         super(driver);
     }
 
-    public void enterValueInSearchField(String val) {
+    public StorePage enterValueInSearchField(String val) {
         searchField.sendKeys(val);
+        return this;
     }
 
-    public void clickSearchButton() {
+    public StorePage clickSearchButton() {
         searchButton.click();
+        return this;
     }
 
     public String getTitle() {
         return title.getText();
     }
 
-    public void clickAddToCartButton() {
+    public StorePage clickAddToCartButton() {
         addToCartButton.click();
+        return this;
     }
 
     public void clickOnViewCartLink() {

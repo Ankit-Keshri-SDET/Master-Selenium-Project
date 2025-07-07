@@ -20,8 +20,7 @@ public class MyFirstTestCase extends BaseTest {
 
         HomePage hp = new HomePage(driver);
         StorePage sp = hp.clickStoreMenuLink(); // Fluent Interface
-        sp.enterValueInSearchField("Blue");
-        sp.clickSearchButton();
+        sp.enterValueInSearchField("Blue").clickSearchButton(); // Builder Pattern
         Thread.sleep(1500);
         Assert.assertTrue(sp.getTitle().contains("Blue"), "Incorrect Search Results ...");
         sp.clickAddToCartButton();
