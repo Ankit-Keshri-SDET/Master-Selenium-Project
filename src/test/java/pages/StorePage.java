@@ -1,6 +1,7 @@
 package pages;
 
 import base.BasePage;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,8 +14,6 @@ public class StorePage extends BasePage {
     private WebElement searchButton;
     @FindBy(tagName = "h1")
     private WebElement title;
-    @FindBy(css = "a[aria-label*='Blue Shoes']")
-    private WebElement addToCartButton;
     @FindBy(css = "a[title='View cart']")
     private WebElement viewCartLink;
 
@@ -36,12 +35,17 @@ public class StorePage extends BasePage {
         return title.getText();
     }
 
-    public StorePage clickAddToCartButton() {
-        addToCartButton.click();
+    private By getAddToCartBtnElement(String productName) {
+        return By.cssSelector("a[aria-label*='" + productName + "']");
+    }
+
+    public StorePage clickAddToCartButton(String productName) {
+        By addToCartButton = getAddToCartBtnElement(productName);
+        driver.findElement(addToCartButton).click();
         return this;
     }
 
-    public void searchProduct(String value){
+    public void searchProduct(String value) {
         enterValueInSearchField(value);
         clickSearchButton();
     }

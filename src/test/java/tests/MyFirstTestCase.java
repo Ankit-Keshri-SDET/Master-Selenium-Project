@@ -20,10 +20,10 @@ public class MyFirstTestCase extends BaseTest {
 
         HomePage hp = new HomePage(driver);
         StorePage sp = hp.clickStoreMenuLink(); // Fluent Interface
-        sp.searchProduct("Blue");
+        sp.searchProduct("Blue"); // Functional Page Object Example, One method holding multiple user action methods
         Thread.sleep(1500);
         Assert.assertTrue(sp.getTitle().contains("Blue"), "Incorrect Search Results ...");
-        sp.clickAddToCartButton();
+        sp.clickAddToCartButton("Blue Shoes");
         Thread.sleep(500);
         sp.clickOnViewCartLink();
 
