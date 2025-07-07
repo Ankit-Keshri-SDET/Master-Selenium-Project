@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import base.BaseTest;
+import pages.CartPage;
+import pages.CheckoutPage;
 import pages.HomePage;
 import pages.StorePage;
 
@@ -25,13 +27,11 @@ public class MyFirstTestCase extends BaseTest {
         Assert.assertTrue(sp.getTitle().contains("Blue"), "Incorrect Search Results ...");
         sp.clickAddToCartButton("Blue Shoes");
         Thread.sleep(500);
-        sp.clickOnViewCartLink();
-
-//        WebElement productName = driver.findElement(By.xpath("//td[@data-title='Product']//a"));
-//        Assert.assertEquals(productName.getText(), "Blue Shoes", "Incorrect product added to Cart ...");
-//        driver.findElement(By.cssSelector(".checkout-button")).click();
-//        driver.findElement(By.id("billing_first_name")).sendKeys("Tester");
-//        driver.findElement(By.id("billing_last_name")).sendKeys("Smoke");
+        CartPage cp = sp.clickOnViewCartLink();
+        Assert.assertEquals(cp.getProductNameOnCartPage(), "Blue Shoes", "Incorrect product added to Cart ...");
+        CheckoutPage ccp = cp.clickOnCheckoutBtn();
+        driver.findElement(By.id("billing_first_name")).sendKeys("Tester");
+        driver.findElement(By.id("billing_last_name")).sendKeys("Smoke");
 //        driver.findElement(By.id("billing_address_1")).sendKeys("San Francisco");
 //        driver.findElement(By.id("billing_city")).sendKeys("San Francisco");
 //        driver.findElement(By.id("billing_postcode")).sendKeys("87178");

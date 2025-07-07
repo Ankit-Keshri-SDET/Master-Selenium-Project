@@ -50,7 +50,8 @@ public class StorePage extends BasePage {
         clickSearchButton();
     }
 
-    public void clickOnViewCartLink() {
+    public CartPage clickOnViewCartLink() {
         viewCartLink.click();
+        return new CartPage(driver);
     }
 }
