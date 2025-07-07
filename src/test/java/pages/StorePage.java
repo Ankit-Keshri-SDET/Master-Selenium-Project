@@ -41,6 +41,11 @@ public class StorePage extends BasePage {
         return this;
     }
 
+    public void searchProduct(String value){
+        enterValueInSearchField(value);
+        clickSearchButton();
+    }
+
     public void clickOnViewCartLink() {
         viewCartLink.click();
     }
