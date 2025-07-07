@@ -1,6 +1,6 @@
-package pom;
+package base;
 
-import factory.DriverManager;
+import pom.factory.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
