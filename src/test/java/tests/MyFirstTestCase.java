@@ -7,16 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pom.BaseTest;
 
 import java.time.Duration;
 
-public class MyFirstTestCase {
+public class MyFirstTestCase extends BaseTest {
     @Test
     public void guestCheckoutUsingDirectBankTransfer() throws InterruptedException {
-        WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.get("https://askomdch.com");
         driver.findElement(By.linkText("Store")).click();
         driver.findElement(By.id("woocommerce-product-search-field-0")).sendKeys("Blue");
