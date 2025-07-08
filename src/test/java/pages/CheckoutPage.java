@@ -109,8 +109,17 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public void doLogin() {
+    public CheckoutPage doLogin() {
         clickLoginBtn.click();
+        return this;
+    }
+
+    public CheckoutPage login(String usn, String pass) {
+        openLoginModal();
+        enterUserName(usn);
+        enterPassword(pass);
+        doLogin();
+        return this;
     }
 
     public void placeOrder() {

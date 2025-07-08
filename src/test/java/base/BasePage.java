@@ -11,4 +11,8 @@ public class BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    public void load(String endpoint) {
+        driver.get("https://askomdch.com" + endpoint);
+    }
+
 }
