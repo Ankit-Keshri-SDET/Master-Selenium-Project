@@ -5,63 +5,75 @@ public class BillingAddress {
     private String billingLastName;
     private String billingAddress;
     private String billingCity;
-    private String billingState;
     private String billingZipCode;
     private String billingEmail;
+
+    public BillingAddress() {
+    }
+
+    public BillingAddress(String billingFirstName, String billingLastName,
+                          String billingAddress, String billingCity,
+                          String billingZipCode, String billingEmail) {
+        this.billingFirstName = billingFirstName;
+        this.billingLastName = billingLastName;
+        this.billingAddress = billingAddress;
+        this.billingCity = billingCity;
+        this.billingZipCode = billingZipCode;
+        this.billingEmail = billingEmail;
+    }
 
     public String getBillingFirstName() {
         return billingFirstName;
     }
 
-    public void setBillingFirstName(String billingFirstName) {
+    public BillingAddress setBillingFirstName(String billingFirstName) {
         this.billingFirstName = billingFirstName;
+        return this;
     }
 
     public String getBillingLastName() {
         return billingLastName;
     }
 
-    public void setBillingLastName(String billingLastName) {
+    public BillingAddress setBillingLastName(String billingLastName) {
         this.billingLastName = billingLastName;
+        return this;
     }
 
     public String getBillingAddress() {
         return billingAddress;
     }
 
-    public void setBillingAddress(String billingAddress) {
+    public BillingAddress setBillingAddress(String billingAddress) {
         this.billingAddress = billingAddress;
+        return this;
     }
 
     public String getBillingCity() {
         return billingCity;
     }
 
-    public void setBillingCity(String billingCity) {
+    public BillingAddress setBillingCity(String billingCity) {
         this.billingCity = billingCity;
-    }
-
-    public String getBillingState() {
-        return billingState;
-    }
-
-    public void setBillingState(String billingState) {
-        this.billingState = billingState;
+        return this;
     }
 
     public String getBillingZipCode() {
         return billingZipCode;
     }
 
-    public void setBillingZipCode(String billingZipCode) {
+    public BillingAddress setBillingZipCode(String billingZipCode) {
         this.billingZipCode = billingZipCode;
+        return this;
+
     }
 
     public String getBillingEmail() {
         return billingEmail;
     }
 
-    public void setBillingEmail(String billingEmail) {
+    public BillingAddress setBillingEmail(String billingEmail) {
         this.billingEmail = billingEmail;
+        return this;
     }
 }

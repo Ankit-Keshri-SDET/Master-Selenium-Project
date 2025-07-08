@@ -13,13 +13,16 @@ public class MyFirstTestCase extends BaseTest {
     @Test
     public void guestCheckoutUsingDirectBankTransfer() throws InterruptedException {
         // Domain Object
-        BillingAddress billingAddress = new BillingAddress();
-        billingAddress.setBillingFirstName("Tester");
-        billingAddress.setBillingLastName("Smoke");
-        billingAddress.setBillingAddress("San Francisco");
-        billingAddress.setBillingCity("San Francisco");
-        billingAddress.setBillingZipCode("87161");
-        billingAddress.setBillingEmail("smokeT@gmail.com");
+//        BillingAddress billingAddress = new BillingAddress()
+//                .setBillingFirstName("Tester")
+//                .setBillingLastName("Smoke")
+//                .setBillingAddress("San Francisco")
+//                .setBillingCity("San Francisco")
+//                .setBillingZipCode("87161")
+//                .setBillingEmail("smokeT@gmail.com");
+
+        BillingAddress billingAddress = new BillingAddress("Tester", "Smoke",
+                "San Francisco", "San Francisco", "791901", "smokeT@gmail.com");
 
         HomePage hp = new HomePage(driver).loadURL();
         StorePage sp = hp.clickStoreMenuLink();
@@ -39,6 +42,13 @@ public class MyFirstTestCase extends BaseTest {
 
     @Test
     public void loginAndCheckoutUsingDirectBankTransfer() throws InterruptedException {
+        BillingAddress billingAddress = new BillingAddress()
+                .setBillingFirstName("Tester")
+                .setBillingLastName("Smoke")
+                .setBillingAddress("San Francisco")
+                .setBillingCity("San Francisco")
+                .setBillingZipCode("87161")
+                .setBillingEmail("smokeT@gmail.com");
         StorePage sp = new HomePage(driver)
                 .loadURL()
                 .clickStoreMenuLink()
@@ -49,14 +59,8 @@ public class MyFirstTestCase extends BaseTest {
         Thread.sleep(500);
         CartPage cp = sp.clickOnViewCartLink();
         Assert.assertEquals(cp.getProductNameOnCartPage(), "Blue Shoes", "Incorrect product added to Cart ...");
-        CheckoutPage ccp = cp.clickOnCheckoutBtn();
-        ccp.login("smokeTest", "Pass12345")
-                .enterBillingFirstName("Tester")
-                .enterBillingLastName("Smoke")
-                .enterAddress("San Francisco")
-                .enterBillingCity("San Francisco")
-                .enterBillingZip("87187")
-                .enterBillingEmail("smokeT@gmail.com")
+        CheckoutPage ccp = cp.clickOnCheckoutBtn()
+                .enterBillingDetails(billingAddress)
                 .placeOrder();
         Thread.sleep(2000);
         Assert.assertEquals(ccp.getNotice(), "Thank you. Your order has been received.");
