@@ -14,5 +14,4 @@ public class BasePage {
     public void load(String endpoint) {
         driver.get("https://askomdch.com" + endpoint);
     }
-
 }

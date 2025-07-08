@@ -34,7 +34,6 @@ public class CheckoutPage extends BasePage {
     @FindBy(css = "button[name='login']")
     private WebElement clickLoginBtn;
 
-
     public CheckoutPage(WebDriver driver) {
         super(driver);
     }
@@ -84,7 +83,6 @@ public class CheckoutPage extends BasePage {
     public CheckoutPage setBillingDetails(String firstname, String lastname,
                                           String address, String city,
                                           String state, String zip, String email) {
-
         return enterBillingFirstName(firstname).
                 enterBillingLastName(lastname).
                 enterAddress(address).
