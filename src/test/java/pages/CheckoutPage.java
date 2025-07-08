@@ -1,6 +1,7 @@
 package pages;
 
 import base.BasePage;
+import objects.BillingAddress;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -120,8 +121,18 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public void placeOrder() {
+    public CheckoutPage enterBillingDetails(BillingAddress billingAddress) {
+        return (enterBillingFirstName(billingAddress.getBillingFirstName()).
+                enterBillingLastName(billingAddress.getBillingLastName()).
+                enterBillingCity(billingAddress.getBillingAddress()).
+                enterBillingCity(billingAddress.getBillingCity()).
+                enterBillingZip(billingAddress.getBillingZipCode()).
+                enterBillingEmail(billingAddress.getBillingEmail()));
+    }
+
+    public CheckoutPage placeOrder() {
         placeOrderButton.click();
+        return this;
     }
 
     public String getNotice() {
