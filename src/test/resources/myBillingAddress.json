@@ -1,0 +1,8 @@
+{
+  "billingFirstName": "demo",
+  "billingLastName": "user",
+  "billingAddress": "San Francisco",
+  "billingCity": "San Francisco",
+  "billingZipCode": "87161",
+  "billingEmail": "smokeTest@gmail.com"
+}

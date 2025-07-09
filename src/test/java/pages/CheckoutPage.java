@@ -124,7 +124,7 @@ public class CheckoutPage extends BasePage {
     public CheckoutPage enterBillingDetails(BillingAddress billingAddress) {
         return (enterBillingFirstName(billingAddress.getBillingFirstName()).
                 enterBillingLastName(billingAddress.getBillingLastName()).
-                enterBillingCity(billingAddress.getBillingAddress()).
+                enterAddress(billingAddress.getBillingAddress()).
                 enterBillingCity(billingAddress.getBillingCity()).
                 enterBillingZip(billingAddress.getBillingZipCode()).
                 enterBillingEmail(billingAddress.getBillingEmail()));
