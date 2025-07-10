@@ -2,6 +2,7 @@ package pages;
 
 import base.BasePage;
 import objects.BillingAddress;
+import objects.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -113,10 +114,10 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public CheckoutPage login(String usn, String pass) {
+    public CheckoutPage login(User user) {
         openLoginModal();
-        enterUserName(usn);
-        enterPassword(pass);
+        enterUserName(user.getUsername());
+        enterPassword(user.getPassword());
         doLogin();
         return this;
     }

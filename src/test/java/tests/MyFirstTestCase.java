@@ -2,6 +2,7 @@ package tests;
 
 import objects.BillingAddress;
 import objects.Products;
+import objects.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import base.BaseTest;
@@ -41,6 +42,7 @@ public class MyFirstTestCase extends BaseTest {
     public void loginAndCheckoutUsingDirectBankTransfer() throws InterruptedException, IOException {
         BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
         Products product = new Products(1215);
+        User user = new User("smokeT@gmail.com", "Pass12345");
         StorePage sp = new HomePage(driver)
                 .loadURL()
                 .clickStoreMenuLink()
@@ -52,7 +54,7 @@ public class MyFirstTestCase extends BaseTest {
         CartPage cp = sp.clickOnViewCartLink();
         Assert.assertEquals(cp.getProductNameOnCartPage(), product.getName(), "Incorrect product added to Cart ...");
         CheckoutPage ccp = cp.clickOnCheckoutBtn()
-                .login("smokeT@gmail.com", "Pass12345")
+                .login(user)
                 .enterBillingDetails(billingAddress)
                 .placeOrder();
         Thread.sleep(2000);
