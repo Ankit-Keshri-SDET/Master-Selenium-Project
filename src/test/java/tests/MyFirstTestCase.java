@@ -17,10 +17,7 @@ import java.io.IOException;
 public class MyFirstTestCase extends BaseTest {
     @Test
     public void guestCheckoutUsingDirectBankTransfer() throws InterruptedException, IOException {
-        // JacksonBind API - Made Method Generic to be used by any Java POJO Class
         BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
-
-        // Product Object for passing from json and class
         Products product = new Products(1215);
         HomePage hp = new HomePage(driver).loadURL();
         StorePage sp = hp.clickStoreMenuLink();
