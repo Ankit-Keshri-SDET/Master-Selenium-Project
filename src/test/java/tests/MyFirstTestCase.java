@@ -10,20 +10,13 @@ import pages.HomePage;
 import pages.StorePage;
 import utils.JacksonUtils;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class MyFirstTestCase extends BaseTest {
     @Test
     public void guestCheckoutUsingDirectBankTransfer() throws InterruptedException, IOException {
 
-//        BillingAddress billingAddress = new BillingAddress("Tester", "Smoke",
-//                "San Francisco", "San Francisco", "791901", "smokeT@gmail.com");
-
-        // JacksonBind API
-        BillingAddress billingAddress = new BillingAddress();
-        InputStream is = getClass().getClassLoader().getResourceAsStream("myBillingAddress.json");
-        billingAddress = JacksonUtils.deserializeJson(is, billingAddress);
-
+        // JacksonBind API - Made Method Generic to be used by any Java POJO Class
+        BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
         HomePage hp = new HomePage(driver).loadURL();
         StorePage sp = hp.clickStoreMenuLink();
         sp.searchProduct("Blue");
@@ -41,14 +34,8 @@ public class MyFirstTestCase extends BaseTest {
     }
 
     @Test
-    public void loginAndCheckoutUsingDirectBankTransfer() throws InterruptedException {
-        BillingAddress billingAddress = new BillingAddress()
-                .setBillingFirstName("Tester")
-                .setBillingLastName("Smoke")
-                .setBillingAddress("San Francisco")
-                .setBillingCity("San Francisco")
-                .setBillingZipCode("87161")
-                .setBillingEmail("smokeT@gmail.com");
+    public void loginAndCheckoutUsingDirectBankTransfer() throws InterruptedException, IOException {
+        BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
         StorePage sp = new HomePage(driver)
                 .loadURL()
                 .clickStoreMenuLink()
