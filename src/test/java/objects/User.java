@@ -1,7 +1,5 @@
 package objects;
 
-import utils.JacksonUtils;
-
 import java.io.IOException;
 
 public class User {

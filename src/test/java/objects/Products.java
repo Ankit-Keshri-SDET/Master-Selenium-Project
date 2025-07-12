@@ -1,7 +1,6 @@
 package objects;
 
 import utils.JacksonUtils;
-
 import java.io.IOException;
 import java.util.Objects;
 
