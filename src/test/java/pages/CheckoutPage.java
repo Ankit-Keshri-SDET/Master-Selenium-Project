@@ -6,7 +6,13 @@ import objects.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.List;
 
 public class CheckoutPage extends BasePage {
     @FindBy(id = "billing_first_name")
@@ -35,6 +41,9 @@ public class CheckoutPage extends BasePage {
     private WebElement passwordField;
     @FindBy(css = "button[name='login']")
     private WebElement clickLoginBtn;
+    // Section 11 - Synchronization - ImplicitWait
+    @FindBy(css = ".blockUI.blockOverlay")
+    private List<WebElement> overlayElement;
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -132,6 +141,7 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage placeOrder() {
+        waitForOverlaysToDissapear(overlayElement);
         placeOrderButton.click();
         return this;
     }
