@@ -6,12 +6,9 @@ import objects.User;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 
 public class CheckoutPage extends BasePage {
@@ -50,19 +47,19 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage enterBillingFirstName(String firstName) {
-        billing_firstName.clear();
+        wait.until(ExpectedConditions.visibilityOf(billing_firstName)).clear();
         billing_firstName.sendKeys(firstName);
         return this;
     }
 
     public CheckoutPage enterBillingLastName(String lastName) {
-        billing_lastName.clear();
+        wait.until(ExpectedConditions.visibilityOf(billing_lastName)).clear();
         billing_lastName.sendKeys(lastName);
         return this;
     }
 
     public CheckoutPage enterAddress(String address) {
-        billing_addressLine.clear();
+        wait.until(ExpectedConditions.visibilityOf(billing_addressLine)).clear();
         billing_addressLine.sendKeys(address);
         return this;
     }
@@ -74,19 +71,19 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage enterBillingCity(String city) {
-        billing_city.clear();
+        wait.until(ExpectedConditions.visibilityOf(billing_city)).clear();
         billing_city.sendKeys(city);
         return this;
     }
 
     public CheckoutPage enterBillingZip(String zip) {
-        postCode.clear();
+        wait.until(ExpectedConditions.visibilityOf(postCode)).clear();
         postCode.sendKeys(zip);
         return this;
     }
 
     public CheckoutPage enterBillingEmail(String email) {
-        emailID.clear();
+        wait.until(ExpectedConditions.visibilityOf(emailID)).clear();
         emailID.sendKeys(email);
         return this;
     }
@@ -104,22 +101,22 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage openLoginModal() {
-        showLoginLink.click();
+        wait.until(ExpectedConditions.elementToBeClickable(showLoginLink)).click();
         return this;
     }
 
     public CheckoutPage enterUserName(String usn) {
-        userNameField.sendKeys(usn);
+        wait.until(ExpectedConditions.visibilityOf(userNameField)).sendKeys(usn);
         return this;
     }
 
     public CheckoutPage enterPassword(String pass) {
-        passwordField.sendKeys(pass);
+        wait.until(ExpectedConditions.visibilityOf(userNameField)).sendKeys(pass);
         return this;
     }
 
     public CheckoutPage doLogin() {
-        clickLoginBtn.click();
+        wait.until(ExpectedConditions.elementToBeClickable(clickLoginBtn)).click();
         return this;
     }
 
@@ -147,6 +144,6 @@ public class CheckoutPage extends BasePage {
     }
 
     public String getNotice() {
-        return noticeTxt.getText();
+        return wait.until(ExpectedConditions.visibilityOf(noticeTxt)).getText();
     }
 }

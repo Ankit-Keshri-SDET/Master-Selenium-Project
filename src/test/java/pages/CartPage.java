@@ -4,6 +4,7 @@ import base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class CartPage extends BasePage {
 
@@ -16,12 +17,12 @@ public class CartPage extends BasePage {
         super(driver);
     }
 
-    public String getProductNameOnCartPage(){
-        return productName.getText();
+    public String getProductNameOnCartPage() {
+        return wait.until(ExpectedConditions.visibilityOf(productName)).getText();
     }
 
-    public CheckoutPage clickOnCheckoutBtn(){
-        checkOutBtn.click();
+    public CheckoutPage clickOnCheckoutBtn() {
+        wait.until(ExpectedConditions.elementToBeClickable(checkOutBtn)).click();
         return new CheckoutPage(driver);
     }
 }

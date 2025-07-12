@@ -5,6 +5,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class StorePage extends BasePage {
 
@@ -22,17 +24,17 @@ public class StorePage extends BasePage {
     }
 
     public StorePage enterValueInSearchField(String val) {
-        searchField.sendKeys(val);
+        wait.until(ExpectedConditions.visibilityOf(searchField)).sendKeys(val);
         return this;
     }
 
     public StorePage clickSearchButton() {
-        searchButton.click();
+        wait.until(ExpectedConditions.elementToBeClickable(searchButton)).click();
         return this;
     }
 
     public String getTitle() {
-        return title.getText();
+        return wait.until(ExpectedConditions.visibilityOf(title)).getText();
     }
 
     private By getAddToCartBtnElement(String productName) {
@@ -52,7 +54,7 @@ public class StorePage extends BasePage {
     }
 
     public CartPage clickOnViewCartLink() {
-        viewCartLink.click();
+        wait.until(ExpectedConditions.elementToBeClickable(viewCartLink)).click();
         return new CartPage(driver);
     }
 }
