@@ -23,6 +23,10 @@ public class StorePage extends BasePage {
         super(driver);
     }
 
+    public boolean isLoaded() {
+        return wait.until(ExpectedConditions.urlContains("/store"));
+    }
+
     public StorePage enterValueInSearchField(String val) {
         wait.until(ExpectedConditions.visibilityOf(searchField)).sendKeys(val);
         return this;

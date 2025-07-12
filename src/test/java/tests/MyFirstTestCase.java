@@ -23,10 +23,12 @@ public class MyFirstTestCase extends BaseTest {
         Products product = new Products(1215);
         HomePage hp = new HomePage(driver).loadURL();
         StorePage sp = hp.clickStoreMenuLink();
+        sp.isLoaded();
         sp.searchProduct("Blue");
         Assert.assertTrue(sp.getTitle().contains("Blue"), "Incorrect Search Results ...");
         sp.clickAddToCartButton(product.getName());
         CartPage cp = sp.clickOnViewCartLink();
+        cp.isLoaded();
         Assert.assertEquals(cp.getProductNameOnCartPage(), product.getName(), "Incorrect product added to Cart ...");
         CheckoutPage ccp = cp.clickOnCheckoutBtn()
                 .enterBillingDetails(billingAddress)
@@ -46,6 +48,7 @@ public class MyFirstTestCase extends BaseTest {
         Assert.assertTrue(sp.getTitle().contains("Blue"), "Incorrect Search Results ...");
         sp.clickAddToCartButton(product.getName());
         CartPage cp = sp.clickOnViewCartLink();
+        cp.isLoaded();
         Assert.assertEquals(cp.getProductNameOnCartPage(), product.getName(), "Incorrect product added to Cart ...");
         CheckoutPage ccp = cp.clickOnCheckoutBtn()
                 .login(user)

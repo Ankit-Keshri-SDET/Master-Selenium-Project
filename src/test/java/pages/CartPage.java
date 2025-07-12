@@ -12,9 +12,15 @@ public class CartPage extends BasePage {
     private WebElement productName;
     @FindBy(css = ".checkout-button")
     private WebElement checkOutBtn;
+    @FindBy(tagName = "h1")
+    private WebElement cartHeading;
 
     public CartPage(WebDriver driver) {
         super(driver);
+    }
+
+    public boolean isLoaded() {
+        return wait.until(ExpectedConditions.textToBePresentInElement(cartHeading, "Cart"));
     }
 
     public String getProductNameOnCartPage() {
