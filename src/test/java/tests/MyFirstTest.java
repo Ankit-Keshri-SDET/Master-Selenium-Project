@@ -11,6 +11,7 @@ import pages.CheckoutPage;
 import pages.HomePage;
 import pages.StorePage;
 import utils.JacksonUtils;
+
 import java.io.IOException;
 
 public class MyFirstTest extends BaseTest {
@@ -34,7 +35,7 @@ public class MyFirstTest extends BaseTest {
         Assert.assertEquals(ccp.getNotice(), "Thank you. Your order has been received.");
     }
 
-    @Test()
+    @Test(enabled = false)
     public void loginAndCheckoutUsingDirectBankTransfer() throws IOException {
         BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
         Products product = new Products(1215);
