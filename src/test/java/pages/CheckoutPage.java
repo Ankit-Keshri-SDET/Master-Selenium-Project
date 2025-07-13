@@ -39,8 +39,6 @@ public class CheckoutPage extends BasePage {
     private WebElement clickLoginBtn;
     @FindBy(css = ".blockUI.blockOverlay")
     private List<WebElement> overlayElement;
-
-    // Section 12 - Dropdown WebElements, User State and Application State Dependency
     @FindBy(id = "billing_country")
     private WebElement selectCountry;
     @FindBy(id = "billing_state")
@@ -111,7 +109,7 @@ public class CheckoutPage extends BasePage {
     }
 
     public CheckoutPage enterPassword(String pass) {
-        wait.until(ExpectedConditions.visibilityOf(userNameField)).sendKeys(pass);
+        wait.until(ExpectedConditions.visibilityOf(passwordField)).sendKeys(pass);
         return this;
     }
 

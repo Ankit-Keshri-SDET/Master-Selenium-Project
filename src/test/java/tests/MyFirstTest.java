@@ -13,7 +13,7 @@ import pages.StorePage;
 import utils.JacksonUtils;
 import java.io.IOException;
 
-public class MyFirstTestCase extends BaseTest {
+public class MyFirstTest extends BaseTest {
     @Test
     public void guestCheckoutUsingDirectBankTransfer() throws IOException {
         BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
