@@ -7,19 +7,23 @@ public class BillingAddress {
     private String billingCity;
     private String billingZipCode;
     private String billingEmail;
+    private String billingCountry;
+    private String billingState;
 
     public BillingAddress() {
     }
 
     public BillingAddress(String billingFirstName, String billingLastName,
                           String billingAddress, String billingCity,
-                          String billingZipCode, String billingEmail) {
+                          String billingZipCode, String billingEmail, String billingCountry, String billingState) {
         this.billingFirstName = billingFirstName;
         this.billingLastName = billingLastName;
         this.billingAddress = billingAddress;
         this.billingCity = billingCity;
         this.billingZipCode = billingZipCode;
         this.billingEmail = billingEmail;
+        this.billingCountry = billingCountry;
+        this.billingState = billingState;
     }
 
     public String getBillingFirstName() {
@@ -75,5 +79,21 @@ public class BillingAddress {
     public BillingAddress setBillingEmail(String billingEmail) {
         this.billingEmail = billingEmail;
         return this;
+    }
+
+    public String getBillingCountry() {
+        return billingCountry;
+    }
+
+    public void setBillingCountry(String billingCountry) {
+        this.billingCountry = billingCountry;
+    }
+
+    public String getBillingState() {
+        return billingState;
+    }
+
+    public void setBillingState(String billingState) {
+        this.billingState = billingState;
     }
 }

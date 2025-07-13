@@ -1,8 +1,10 @@
 {
   "billingFirstName": "demo",
   "billingLastName": "user",
-  "billingAddress": "San Francisco",
-  "billingCity": "San Francisco",
-  "billingZipCode": "87161",
+  "billingCountry": "India",
+  "billingAddress": "Kharadi, Manjri",
+  "billingCity": "Pune",
+  "billingState": "Bihar",
+  "billingZipCode": "411001",
   "billingEmail": "smokeTest@gmail.com"
 }

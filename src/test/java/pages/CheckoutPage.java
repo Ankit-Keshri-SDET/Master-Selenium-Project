@@ -41,6 +41,11 @@ public class CheckoutPage extends BasePage {
     // Section 11 - Synchronization - ImplicitWait
     @FindBy(css = ".blockUI.blockOverlay")
     private List<WebElement> overlayElement;
+    // Section 12 - Dropdown WebElements
+    @FindBy(id = "billing_country")
+    private WebElement selectCountry;
+    @FindBy(id = "billing_state")
+    private WebElement selectState;
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -64,12 +69,6 @@ public class CheckoutPage extends BasePage {
         return this;
     }
 
-    public CheckoutPage selectState(String state) {
-        Select select = new Select(billingState);
-        select.selectByVisibleText(state);
-        return this;
-    }
-
     public CheckoutPage enterBillingCity(String city) {
         wait.until(ExpectedConditions.visibilityOf(billing_city)).clear();
         billing_city.sendKeys(city);
@@ -90,12 +89,12 @@ public class CheckoutPage extends BasePage {
 
     public CheckoutPage setBillingDetails(String firstname, String lastname,
                                           String address, String city,
-                                          String state, String zip, String email) {
+                                          String state, String zip, String email, String country) {
         return enterBillingFirstName(firstname).
                 enterBillingLastName(lastname).
                 enterAddress(address).
                 enterBillingCity(city).
-                selectState(state).
+                selectStateFromDropdown(state).
                 enterBillingZip(zip).
                 enterBillingEmail(email);
     }
@@ -131,8 +130,10 @@ public class CheckoutPage extends BasePage {
     public CheckoutPage enterBillingDetails(BillingAddress billingAddress) {
         return (enterBillingFirstName(billingAddress.getBillingFirstName()).
                 enterBillingLastName(billingAddress.getBillingLastName()).
+                selectCountryFromDropDown(billingAddress.getBillingCountry()).
                 enterAddress(billingAddress.getBillingAddress()).
                 enterBillingCity(billingAddress.getBillingCity()).
+                selectStateFromDropdown(billingAddress.getBillingState()).
                 enterBillingZip(billingAddress.getBillingZipCode()).
                 enterBillingEmail(billingAddress.getBillingEmail()));
     }
@@ -145,5 +146,18 @@ public class CheckoutPage extends BasePage {
 
     public String getNotice() {
         return wait.until(ExpectedConditions.visibilityOf(noticeTxt)).getText();
+    }
+
+    public CheckoutPage selectCountryFromDropDown(String countryName) {
+        Select sel = new Select(selectCountry);
+        sel.selectByVisibleText(countryName);
+        return this;
+    }
+
+    public CheckoutPage selectStateFromDropdown(String stateName) {
+        wait.until(ExpectedConditions.visibilityOf(selectState));
+        Select sel = new Select(selectState);
+        sel.selectByIndex(5);
+        return this;
     }
 }
