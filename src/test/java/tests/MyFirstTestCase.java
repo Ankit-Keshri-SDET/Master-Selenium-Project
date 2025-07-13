@@ -13,8 +13,6 @@ import pages.StorePage;
 import utils.JacksonUtils;
 import java.io.IOException;
 
-// Implicit Wait - Removed all Static Thread.sleep lines ...
-
 public class MyFirstTestCase extends BaseTest {
     @Test
     public void guestCheckoutUsingDirectBankTransfer() throws IOException {
@@ -31,6 +29,7 @@ public class MyFirstTestCase extends BaseTest {
         Assert.assertEquals(cp.getProductNameOnCartPage(), product.getName(), "Incorrect product added to Cart ...");
         CheckoutPage ccp = cp.clickOnCheckoutBtn()
                 .enterBillingDetails(billingAddress)
+                .selectDirectBankTransferOption()
                 .placeOrder();
         Assert.assertEquals(ccp.getNotice(), "Thank you. Your order has been received.");
     }
@@ -52,6 +51,7 @@ public class MyFirstTestCase extends BaseTest {
         CheckoutPage ccp = cp.clickOnCheckoutBtn()
                 .login(user)
                 .enterBillingDetails(billingAddress)
+                .selectDirectBankTransferOption()
                 .placeOrder();
         Assert.assertEquals(ccp.getNotice(), "Thank you. Your order has been received.");
     }

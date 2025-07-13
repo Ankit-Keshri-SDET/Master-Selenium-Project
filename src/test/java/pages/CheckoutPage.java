@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
 import java.util.List;
 
 public class CheckoutPage extends BasePage {
@@ -38,14 +37,16 @@ public class CheckoutPage extends BasePage {
     private WebElement passwordField;
     @FindBy(css = "button[name='login']")
     private WebElement clickLoginBtn;
-    // Section 11 - Synchronization - ImplicitWait
     @FindBy(css = ".blockUI.blockOverlay")
     private List<WebElement> overlayElement;
-    // Section 12 - Dropdown WebElements
+
+    // Section 12 - Dropdown WebElements, User State and Application State Dependency
     @FindBy(id = "billing_country")
     private WebElement selectCountry;
     @FindBy(id = "billing_state")
     private WebElement selectState;
+    @FindBy(id = "payment_method_bacs")
+    private WebElement directBankTransferRadioButton;
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
@@ -158,6 +159,14 @@ public class CheckoutPage extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(selectState));
         Select sel = new Select(selectState);
         sel.selectByIndex(5);
+        return this;
+    }
+
+    public CheckoutPage selectDirectBankTransferOption() {
+        WebElement ele = wait.until(ExpectedConditions.elementToBeClickable(directBankTransferRadioButton));
+        if (!ele.isSelected()) {
+            ele.click();
+        }
         return this;
     }
 }
