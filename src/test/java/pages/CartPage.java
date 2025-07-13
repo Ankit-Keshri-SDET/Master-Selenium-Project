@@ -3,6 +3,7 @@ package pages;
 import base.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
@@ -11,6 +12,7 @@ public class CartPage extends BasePage {
     @FindBy(xpath = "//td[@data-title='Product']//a")
     private WebElement productName;
     @FindBy(css = ".checkout-button")
+    @CacheLookup
     private WebElement checkOutBtn;
     @FindBy(tagName = "h1")
     private WebElement cartHeading;
