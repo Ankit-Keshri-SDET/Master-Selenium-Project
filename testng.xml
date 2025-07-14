@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="AskOmDCH Website Testing" verbose="1">
-    <test name="Package Test">
-        <packages>
-            <package name="tests"/>
-        </packages>
+    <test name="Package Test" thread-count="2">
+        <classes>
+            <class name="tests.MyFirstTest"/>
+        </classes>
     </test>
 </suite>
