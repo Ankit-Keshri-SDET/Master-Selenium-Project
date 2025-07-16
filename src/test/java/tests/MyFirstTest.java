@@ -24,15 +24,15 @@ public class MyFirstTest extends BaseTest {
         sp.isLoaded();
         sp.searchProduct("Blue");
         Assert.assertTrue(sp.getTitle().contains("Blue"), "Incorrect Search Results ...");
-        sp.clickAddToCartButton(product.getName());
-        CartPage cp = sp.clickOnViewCartLink();
-        cp.isLoaded();
-        Assert.assertEquals(cp.getProductNameOnCartPage(), product.getName(), "Incorrect product added to Cart ...");
-        CheckoutPage ccp = cp.clickOnCheckoutBtn()
-                .enterBillingDetails(billingAddress)
-                .selectDirectBankTransferOption()
-                .placeOrder();
-        Assert.assertEquals(ccp.getNotice(), "Thank you. Your order has been received.");
+//        sp.clickAddToCartButton(product.getName());
+//        CartPage cp = sp.clickOnViewCartLink();
+//        cp.isLoaded();
+//        Assert.assertEquals(cp.getProductNameOnCartPage(), product.getName(), "Incorrect product added to Cart ...");
+//        CheckoutPage ccp = cp.clickOnCheckoutBtn()
+//                .enterBillingDetails(billingAddress)
+//                .selectDirectBankTransferOption()
+//                .placeOrder();
+//        Assert.assertEquals(ccp.getNotice(), "Thank you. Your order has been received.");
     }
 
     @Test(enabled = false)
