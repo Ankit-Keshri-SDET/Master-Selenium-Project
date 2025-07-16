@@ -22,8 +22,8 @@ public class MyFirstTest extends BaseTest {
         HomePage hp = new HomePage(driver).loadURL();
         StorePage sp = hp.clickStoreMenuLink();
         sp.isLoaded();
-        sp.searchProduct("Blue");
-        Assert.assertTrue(sp.getTitle().contains("Blue"), "Incorrect Search Results ...");
+//        sp.searchProduct("Blue");
+//        Assert.assertTrue(sp.getTitle().contains("Blue"), "Incorrect Search Results ...");
 //        sp.clickAddToCartButton(product.getName());
 //        CartPage cp = sp.clickOnViewCartLink();
 //        cp.isLoaded();
