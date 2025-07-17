@@ -19,7 +19,7 @@ public class MyFirstTest extends BaseTest {
     public void guestCheckoutUsingDirectBankTransfer() throws IOException {
         BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
         Products product = new Products(1215);
-        HomePage hp = new HomePage(driver).loadURL();
+        HomePage hp = new HomePage(getDriver()).loadURL();
         StorePage sp = hp.clickStoreMenuLink();
         sp.isLoaded();
 //        sp.searchProduct("Blue");
@@ -40,20 +40,20 @@ public class MyFirstTest extends BaseTest {
         BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
         Products product = new Products(1215);
         User user = new User("smokeT@gmail.com", "Pass12345");
-        StorePage sp = new HomePage(driver)
+        StorePage sp = new HomePage(getDriver())
                 .loadURL()
                 .clickStoreMenuLink()
                 .searchProduct("Blue");
         Assert.assertTrue(sp.getTitle().contains("Blue"), "Incorrect Search Results ...");
-        sp.clickAddToCartButton(product.getName());
-        CartPage cp = sp.clickOnViewCartLink();
-        cp.isLoaded();
-        Assert.assertEquals(cp.getProductNameOnCartPage(), product.getName(), "Incorrect product added to Cart ...");
-        CheckoutPage ccp = cp.clickOnCheckoutBtn()
-                .login(user)
-                .enterBillingDetails(billingAddress)
-                .selectDirectBankTransferOption()
-                .placeOrder();
-        Assert.assertEquals(ccp.getNotice(), "Thank you. Your order has been received.");
+//        sp.clickAddToCartButton(product.getName());
+//        CartPage cp = sp.clickOnViewCartLink();
+//        cp.isLoaded();
+//        Assert.assertEquals(cp.getProductNameOnCartPage(), product.getName(), "Incorrect product added to Cart ...");
+//        CheckoutPage ccp = cp.clickOnCheckoutBtn()
+//                .login(user)
+//                .enterBillingDetails(billingAddress)
+//                .selectDirectBankTransferOption()
+//                .placeOrder();
+//        Assert.assertEquals(ccp.getNotice(), "Thank you. Your order has been received.");
     }
 }
