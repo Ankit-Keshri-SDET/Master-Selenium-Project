@@ -35,7 +35,7 @@ public class MyFirstTest extends BaseTest {
 //        Assert.assertEquals(ccp.getNotice(), "Thank you. Your order has been received.");
     }
 
-    @Test(enabled = false)
+    @Test()
     public void loginAndCheckoutUsingDirectBankTransfer() throws IOException {
         BillingAddress billingAddress = JacksonUtils.deserializeJson("myBillingAddress.json", BillingAddress.class);
         Products product = new Products(1215);

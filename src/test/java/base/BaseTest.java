@@ -20,6 +20,7 @@ public class BaseTest {
     @Parameters("browser")
     @BeforeMethod
     public void startDriver(String browser) {
+        browser = System.getProperty("browser", browser);
         setDriver(new DriverManager().initDriver(browser));
     }
 
