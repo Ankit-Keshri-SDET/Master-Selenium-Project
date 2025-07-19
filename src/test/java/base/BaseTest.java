@@ -1,5 +1,6 @@
 package base;
 
+import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import pom.factory.DriverManager;
 import org.openqa.selenium.WebDriver;
@@ -19,8 +20,9 @@ public class BaseTest {
 
     @Parameters("browser")
     @BeforeMethod
-    public void startDriver(String browser) {
+    public void startDriver(@Optional String browser) {
         browser = System.getProperty("browser", browser);
+//        if (browser == null) browser = "CHROME";
         setDriver(new DriverManager().initDriver(browser));
     }
 
